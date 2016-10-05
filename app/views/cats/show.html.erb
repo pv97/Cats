@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <h2>Kittinfo</h2>
+    <%= render "shared/object", obj: @cat %>
+    <h2>Rental Requests</h2>
+    <% @rental_requests.each do |rental| %>
+      <%= render "shared/object", obj: rental  %>
+      <%= button_to "Approve", approve_cat_rental_request_url(rental.id),
+            method: :patch %>
+      <%= button_to "Deny", deny_cat_rental_request_url(rental.id),
+            method: :patch %>
+
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<% action = cat.persisted? ? "patch" : "post" %>
+<% action_url = (action == "post") ? cats_url : cat_url(id: cat.id) %>
+
+  <form action=<%= action_url %> method="post" >
+    <input type="hidden" name="_method" value=<%= action %>>
+    <label for="name">Name: </label>
+    <input type="text" id="name" name=cat[name]
+      value=<%= cat.name %> ></input>
+    <br/>
+
+    <label for="sex">Sex: </label>
+    <input type="radio" id="name" name=cat[sex] value="F"
+      <%= cat.sex == "F" ? "checked=\"checked\"" : "" %> >Female</input>
+    <input type="radio" id="name" name=cat[sex] value="M"
+      <%= cat.sex == "M" ? "checked=\"checked\"" : "" %> >Male</input>
+    <br/>
+
+    <label for="color">Color:</label>
+    <select id="color" name="cat[color]">
+      <option disabled="true" selected="true" value="tie-dye">Select a color</option>
+      <option value="red"
+        <%= cat.color == "red" ? "selected=\"selected\"" : "" %> >Red</option>
+      <option value="white"
+        <%= cat.color == "white" ? "selected=\"selected\"" : "" %>>White</option>
+      <option value="black"
+        <%= cat.color == "black" ? "selected=\"selected\"" : "" %>>Black</option>
+      <option value="purple"
+        <%= cat.color == "purple" ? "selected=\"selected\"" : "" %> >Purple</option>
+    </select>
+    <br/>
+
+    <label for="dob">Date of Birth:</label>
+    <input type='date' id="dob" name=cat[birth_date]
+      value=<%= cat.birth_date || Date.today %> >
+    <br/>
+
+    <label>Warm and Fuzzy Memories <br/>
+      <textarea name="cat[description]" cols="30" rows="10"
+      ><%= cat.description %></textarea>
+    </label>
+
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+  </body>
+</html>

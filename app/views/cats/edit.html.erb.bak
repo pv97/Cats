@@ -1,0 +1,82 @@
+<!-- <form action="/reviews" method="post">
+  <label for="name">Name</label>
+  <input id="name" type="text" name="name">
+
+  <label for="rating">Rating</label>
+  1<input type="radio" name="rating" value="1" checked>
+  2<input type="radio" name="rating" value="2">
+  3<input type="radio" name="rating" value="3">
+  4<input type="radio" name="rating" value="4">
+  5<input type="radio" name="rating" value="5">
+
+  <label for="expertise">Cooking Expertise</label>
+
+  <select id="expertise" name="expertise">
+    <option value="Select Cooking Expertise" disabled="true" selected="true">Select Cooking Experise</option>
+
+    <option value="Sometimes Cook">Sometimes Cook</option>
+
+    <option value="Cook Everyday">Cook Everyday</option>
+
+    <option value="Cooking is a Hobby">Cooking is a Hobby</option>
+
+    <option value="Professional Chef">Professional Chef</option>
+  </select>
+
+  <label>Review
+    <textarea name="review" cols="30" rows="10"></textarea>
+  </label>
+
+  <input type="submit" value="Submit Review">
+</form> -->
+<%# action = @cat.nil? ? "POST" : "PATCH" %>
+<%# action_url = (action == "POST") ? "POST" : "PATCH" %>
+
+<html>
+  <body>
+
+  <form action=<% cats_url %> method="POST" >
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name=cat[name]
+      value=<%= @cat.name %> ></input>
+    <br/>
+
+    <label for="sex">Sex: </label>
+    <input type="radio" id="name" name=cat[sex] value="F"
+      <%= @cat.sex == "F" ? "checked=\"checked\"" : "" %> >Female</input>
+    <input type="radio" id="name" name=cat[sex] value="M"
+      <%= @cat.sex == "M" ? "checked=\"checked\"" : "" %> >Male</input>
+    <br/>
+
+    <label for="color">Color:</label>
+    <select id="color" name="cat[color]">
+      <option disabled="true" selected="true" value="tie-dye">Select a color</option>
+      <option value="red"
+        <%= @cat.color == "red" ? "selected=\"selected\"" : "" %> >Red</option>
+      <option value="white"
+        <%= @cat.color == "white" ? "selected=\"selected\"" : "" %>>White</option>
+      <option value="black"
+        <%= @cat.color == "black" ? "selected=\"selected\"" : "" %>>Black</option>
+      <option value="purple"
+        <%= @cat.color == "purple" ? "selected=\"selected\"" : "" %> >Purple</option>
+    </select>
+    <br/>
+
+    <label for="dob">Date of Birth:</label>
+    <input type='date' id="dob" name=cat[birth_date]
+      value=<%= @cat.birth_date %> >
+    <br/>
+
+    <label>Warm and Fuzzy Memories <br/>
+      <textarea name="cat[description]" cols="30" rows="10"
+      ><%= @cat.description %> 
+      </textarea>
+    </label>
+
+    <br/>
+    <input type="submit" value="Submit">
+  </form>
+
+  </body>
+</html>
